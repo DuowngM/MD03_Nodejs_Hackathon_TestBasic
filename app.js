@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const fs = require("fs");
 const bodyParser = require("body-parser");
-const { randomUUID } = require("crypto");
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,7 +19,7 @@ const usersRoutes = require("./routes/user.routes");
 app.use("/api/v1/users", usersRoutes);
 //Import route Posts
 const postRoutes = require("./routes/post.routes");
-//Su dung route Post
+//Su dung route Posts
 app.use("/api/v1/posts", postRoutes);
 
 //---------------------------------------------------------------------------

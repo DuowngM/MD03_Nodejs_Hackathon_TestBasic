@@ -122,4 +122,23 @@ router.delete("/:id", (req, res) => {
     });
   }
 });
+//Bonus
+router.get("/:userId/posts", (req, res) => {
+  let { userId } = req.params;
+  try {
+    let posts = JSON.parse(fs.readFileSync("./user-post-api/posts.json"));
+    let findPost = posts.find((post) => post.userId === +userId);
+    if (findPost) {
+      res.json(findPost);
+    } else {
+      res.json({
+        message: "Ko tim thay Post",
+      });
+    }
+  } catch (error) {
+    res.json({
+      error,
+    });
+  }
+});
 module.exports = router;
